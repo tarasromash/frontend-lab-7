@@ -1,0 +1,9 @@
+{
+  "name": "courtly-lab-7",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ЛР-7: адаптивна сторінка Courtly на HTML і CSS",
+  "scripts": {
+    "start": "node scripts/serve.cjs"
+  }
+}

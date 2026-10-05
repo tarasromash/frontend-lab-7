@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Courtly — бронювання спортивних майданчиків онлайн</title>
+    <meta
+      name="description"
+      content="Знайдіть футбольне поле, тенісний корт або спортивний зал у своєму місті. Courtly — зручний пошук майданчиків, доступного часу та бронювання онлайн."
+    />
+    <link
+      rel="canonical"
+      href="https://tarasromash.github.io/frontend-lab-7/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta
+      property="og:title"
+      content="Courtly — знайдіть майданчик для своєї гри"
+    />
+    <meta
+      property="og:description"
+      content="Спортивні майданчики у вашому місті: обирайте місце, дату й час для наступної гри."
+    />
+    <meta
+      property="og:url"
+      content="https://tarasromash.github.io/frontend-lab-7/"
+    />
+    <meta
+      property="og:image"
+      content="https://tarasromash.github.io/frontend-lab-7/img/og-image.jpg"
+    />
+    <meta
+      property="og:image:alt"
+      content="Courtly — бронювання спортивних майданчиків"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="fonts/montserrat-cyrillic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="fonts/fonts.css" />
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="menu.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Перейти до вмісту</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#" aria-label="Courtly — на початок сторінки"
+          ><img
+            src="img/logo-mark.svg"
+            width="40"
+            height="40"
+            loading="lazy"
+            alt=""
+          />Courtly</a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          hidden
+        >
+          <span class="menu-icon" aria-hidden="true"></span>Меню
+        </button>
+        <nav class="main-nav" id="main-nav" aria-label="Основна навігація">
+          <ul class="nav-links">
+            <li><a href="#venues">Майданчики</a></li>
+            <li><a href="#how">Як це працює</a></li>
+            <li><a href="#about">Про сервіс</a></li>
+          </ul>
+          <a class="button button-primary" href="#venues">Забронювати</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1 id="hero-title">
+                Забронюйте спортивний майданчик без зайвих дзвінків
+              </h1>
+              <p>
+                Обирайте зручний майданчик, дату та час — і бронюйте онлайн за
+                кілька кліків.
+              </p>
+              <a class="button button-primary button-large" href="#venues"
+                >Знайти майданчик</a
+              >
+            </div>
+            <img
+              class="hero-image"
+              src="img/hero-1200.webp"
+              srcset="img/hero-800.webp 800w, img/hero-1200.webp 1200w"
+              sizes="(min-width: 1264px) 568px, (min-width: 1024px) 45vw, 100vw"
+              width="1200"
+              height="900"
+              fetchpriority="high"
+              alt="Зелене футбольне поле з воротами та прожекторами серед дерев"
+            />
+          </div>
+          <form
+            class="search-form"
+            id="search"
+            action="#venues"
+            aria-label="Пошук майданчика"
+          >
+            <div class="form-field">
+              <label for="city">Місто</label
+              ><select id="city" name="city" required>
+                <option value="">Оберіть місто</option>
+                <option>Київ</option>
+                <option>Львів</option>
+                <option>Одеса</option>
+                <option>Харків</option>
+                <option>Дніпро</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="sport">Вид спорту</label
+              ><select id="sport" name="sport" required>
+                <option value="">Будь-який</option>
+                <option>Футбол</option>
+                <option>Теніс</option>
+                <option>Баскетбол</option>
+                <option>Волейбол</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="date">Дата</label
+              ><input id="date" name="date" type="date" required />
+            </div>
+            <button class="button button-primary search-submit" type="submit">
+              Знайти
+            </button>
+          </form>
+        </div>
+      </section>
+      <section
+        class="section venues"
+        id="venues"
+        aria-labelledby="venues-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <h2 id="venues-title">Популярні майданчики</h2>
+            <p>Оберіть майданчик для тренування, гри або змагання.</p>
+          </div>
+          <div class="venue-grid">
+            <article class="venue-card venue-featured">
+              <div class="venue-media">
+                <img
+                  src="img/arena-sport.webp"
+                  width="900"
+                  height="1200"
+                  loading="lazy"
+                  alt="Футбольне поле Arena Sport з м’ячем і воротами під вечірнім освітленням"
+                /><span class="badge">Вибір тижня</span>
+              </div>
+              <div class="venue-body">
+                <div class="venue-meta">
+                  <span class="chip">Футбол</span
+                  ><span class="rating"
+                    ><span class="star" aria-hidden="true">★</span> 4.9
+                    <span class="review-count">(212 відгуків)</span></span
+                  >
+                </div>
+                <h3>Arena Sport</h3>
+                <p class="venue-description">
+                  Поле 40×20 м зі штучним газоном 4G, вечірнім освітленням і
+                  роздягальнями.
+                </p>
+                <ul class="featured-details feature-list">
+                  <li>Прожектори до 23:00</li>
+                  <li>Роздягальні та душ</li>
+                  <li>Паркування поруч</li>
+                </ul>
+                <div class="featured-details slots">
+                  <p>Вільно сьогодні</p>
+                  <ul>
+                    <li>18:00</li>
+                    <li>19:00</li>
+                    <li>21:00</li>
+                  </ul>
+                </div>
+                <div class="venue-bottom">
+                  <p class="price">450 грн<span>/год</span></p>
+                  <button class="button button-primary" type="button">
+                    Забронювати<span class="visually-hidden"> Arena Sport</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article class="venue-card">
+              <div class="venue-media">
+                <img
+                  src="img/tennis-point.webp"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  alt="Синій тенісний корт Tennis Point під дахом із сіткою посередині"
+                />
+              </div>
+              <div class="venue-body">
+                <div class="venue-meta">
+                  <span class="chip">Теніс</span
+                  ><span class="rating"
+                    ><span class="star" aria-hidden="true">★</span> 4.7
+                    <span class="review-count">(98 відгуків)</span></span
+                  >
+                </div>
+                <h3>Tennis Point</h3>
+                <p class="venue-description">
+                  Хардовий корт під накриттям — грати можна за будь-якої погоди.
+                  Оренда ракеток.
+                </p>
+                <div class="venue-bottom">
+                  <p class="price">350 грн<span>/год</span></p>
+                  <button class="button button-outline" type="button">
+                    Забронювати<span class="visually-hidden">
+                      Tennis Point</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article class="venue-card">
+              <div class="venue-media">
+                <img
+                  src="img/riverside-court.webp"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  alt="Помаранчево-синій баскетбольний майданчик Riverside Court біля води"
+                />
+              </div>
+              <div class="venue-body">
+                <div class="venue-meta">
+                  <span class="chip">Баскетбол</span
+                  ><span class="rating"
+                    ><span class="star" aria-hidden="true">★</span> 4.6
+                    <span class="review-count">(76 відгуків)</span></span
+                  >
+                </div>
+                <h3>Riverside Court</h3>
+                <p class="venue-description">
+                  Повнорозмірний відкритий майданчик на набережній з новими
+                  кільцями.
+                </p>
+                <div class="venue-bottom">
+                  <p class="price">400 грн<span>/год</span></p>
+                  <button class="button button-outline" type="button">
+                    Забронювати<span class="visually-hidden">
+                      Riverside Court</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article class="venue-card">
+              <div class="venue-media">
+                <img
+                  src="img/smash-club.webp"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  alt="Ґрунтовий тенісний корт Smash Club із білою розміткою та сіткою"
+                />
+              </div>
+              <div class="venue-body">
+                <div class="venue-meta">
+                  <span class="chip">Теніс</span
+                  ><span class="rating"
+                    ><span class="star" aria-hidden="true">★</span> 4.8
+                    <span class="review-count">(143 відгуки)</span></span
+                  >
+                </div>
+                <h3>Smash Club</h3>
+                <p class="venue-description">
+                  Два ґрунтові корти та тренер за попереднім записом.
+                </p>
+                <div class="venue-bottom">
+                  <p class="price">500 грн<span>/год</span></p>
+                  <button class="button button-outline" type="button">
+                    Забронювати<span class="visually-hidden"> Smash Club</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article class="venue-card">
+              <div class="venue-media">
+                <img
+                  src="img/city-football.webp"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  alt="Освітлене мініфутбольне поле City Football серед міських будинків увечері"
+                />
+              </div>
+              <div class="venue-body">
+                <div class="venue-meta">
+                  <span class="chip">Футбол</span
+                  ><span class="rating"
+                    ><span class="star" aria-hidden="true">★</span> 4.5
+                    <span class="review-count">(64 відгуки)</span></span
+                  >
+                </div>
+                <h3>City Football</h3>
+                <p class="venue-description">
+                  Міні-поле 5×5 у центрі міста. М’ячі та манішки надаються.
+                </p>
+                <div class="venue-bottom">
+                  <p class="price">420 грн<span>/год</span></p>
+                  <button class="button button-outline" type="button">
+                    Забронювати<span class="visually-hidden">
+                      City Football</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article class="venue-card">
+              <div class="venue-media">
+                <img
+                  src="img/active-hall.webp"
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  alt="Критий волейбольний зал Active Hall із сіткою та місцями для глядачів"
+                />
+              </div>
+              <div class="venue-body">
+                <div class="venue-meta">
+                  <span class="chip">Волейбол</span
+                  ><span class="rating"
+                    ><span class="star" aria-hidden="true">★</span> 4.7
+                    <span class="review-count">(51 відгук)</span></span
+                  >
+                </div>
+                <h3>Active Hall</h3>
+                <p class="venue-description">
+                  Критий зал із професійним покриттям, сіткою та трибуною для
+                  глядачів.
+                </p>
+                <div class="venue-bottom">
+                  <p class="price">380 грн<span>/год</span></p>
+                  <button class="button button-outline" type="button">
+                    Забронювати<span class="visually-hidden"> Active Hall</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section how" id="how" aria-labelledby="how-title">
+        <div class="container">
+          <h2 id="how-title">Як це працює</h2>
+          <ol class="steps">
+            <li class="step">
+              <span class="step-number" aria-hidden="true">01</span>
+              <h3>Оберіть майданчик</h3>
+              <p>Перегляньте доступні спортивні майданчики.</p>
+            </li>
+            <li class="step">
+              <span class="step-number" aria-hidden="true">02</span>
+              <h3>Оберіть дату і час</h3>
+              <p>Перевірте доступність потрібного слоту.</p>
+            </li>
+            <li class="step">
+              <span class="step-number" aria-hidden="true">03</span>
+              <h3>Підтвердіть бронювання</h3>
+              <p>Забронюйте майданчик онлайн.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container about-grid">
+          <div class="about-copy">
+            <h2 id="about-title">Спорт має бути доступним</h2>
+            <p class="lead">
+              Courtly збирає футбольні поля, корти та зали міста в одному
+              каталозі. Ви бачите реальний розклад і бронюєте без дзвінків та
+              передоплат телефоном.
+            </p>
+            <ul class="benefits">
+              <li>
+                <span class="benefit-icon" aria-hidden="true">✓</span>
+                <div>
+                  <h3>Швидке бронювання</h3>
+                  <p>Від вибору майданчика до підтвердження — менше хвилини.</p>
+                </div>
+              </li>
+              <li>
+                <span class="benefit-icon" aria-hidden="true">✓</span>
+                <div>
+                  <h3>Актуальна доступність</h3>
+                  <p>Розклад оновлюється одразу після кожного бронювання.</p>
+                </div>
+              </li>
+              <li>
+                <span class="benefit-icon" aria-hidden="true">✓</span>
+                <div>
+                  <h3>Зручний пошук</h3>
+                  <p>Фільтри за містом, видом спорту та датою.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <img
+            class="about-image"
+            src="img/about.webp"
+            width="960"
+            height="1200"
+            loading="lazy"
+            alt="Відкритий баскетбольний майданчик із м’ячем на заході сонця"
+          />
+        </div>
+      </section>
+      <section class="cta-section" aria-labelledby="cta-title">
+        <div class="container">
+          <div class="cta">
+            <h2 id="cta-title">Готові до наступної гри?</h2>
+            <p>Знайдіть майданчик та забронюйте зручний час прямо зараз.</p>
+            <a class="button button-accent button-large" href="#search"
+              >Знайти майданчик</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer" id="contacts">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a class="brand" href="#" aria-label="Courtly — на початок сторінки"
+              ><img
+                src="img/logo-mark.svg"
+                width="40"
+                height="40"
+                loading="lazy"
+                alt=""
+              />Courtly</a
+            >
+            <p>
+              Онлайн-бронювання спортивних майданчиків: футбол, теніс, баскетбол
+              і волейбол у вашому місті.
+            </p>
+          </div>
+          <nav aria-label="Навігація в підвалі">
+            <p class="footer-heading">Навігація</p>
+            <ul>
+              <li><a href="#venues">Майданчики</a></li>
+              <li><a href="#how">Як це працює</a></li>
+              <li><a href="#about">Про сервіс</a></li>
+              <li><a href="#contacts">Контакти</a></li>
+            </ul>
+          </nav>
+          <div>
+            <p class="footer-heading">Контакти</p>
+            <ul>
+              <li>
+                <a href="mailto:hello@courtly.example">hello@courtly.example</a>
+              </li>
+              <li><a href="tel:+380441234567">+380 44 123 45 67</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-heading">Ми в соцмережах</p>
+            <ul class="social-links">
+              <li><a href="https://www.instagram.com/">Instagram</a></li>
+              <li><a href="https://www.facebook.com/">Facebook</a></li>
+              <li><a href="https://telegram.org/">Telegram</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="copyright">© 2026 Courtly. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
